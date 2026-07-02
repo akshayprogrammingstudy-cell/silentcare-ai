@@ -1,0 +1,6 @@
+node_modules/
+.env
+data/users.csv
+data/users.sql
+data/sent_emails.txt
+*.log

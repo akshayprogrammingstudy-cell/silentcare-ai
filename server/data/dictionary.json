@@ -1,0 +1,27 @@
+{
+  "emergency": [
+    "emergency", "help", "ambulance", "accident", "danger", "danger",
+    "sos", "urgent", "critical", "fire", "attack", "overdose",
+    "bleeding", "unconscious", "rescue", "crisis", "distress",
+    "breathing problem", "need help", "call police"
+  ],
+  "medical": [
+    "doctor", "pain", "medicine", "hospital", "fever", "dizzy",
+    "sick", "injury", "wound", "heart", "blood", "medication",
+    "pharmacy", "nurse", "surgery", "allergy", "diabetes", "insulin",
+    "inhaler", "nausea", "fracture", "illness", "treatment"
+  ],
+  "request": [
+    "water", "food", "bathroom", "hungry", "thirsty", "please repeat",
+    "call family", "blanket", "chair", "phone", "wheelchair",
+    "interpreter", "quiet", "rest", "toilet", "help me eat",
+    "need assistance", "bring", "fetch", "lift"
+  ],
+  "general": [
+    "hello", "yes", "no", "thank you", "stop", "okay", "sorry",
+    "tired", "scared", "wait", "I am okay", "good morning",
+    "goodbye", "please", "understand", "name", "where", "who",
+    "what", "when", "how", "why", "come", "go", "see", "hear",
+    "feel", "want", "need", "have", "can", "will", "done"
+  ]
+}

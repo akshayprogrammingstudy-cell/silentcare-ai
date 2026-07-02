@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SilentCare AI - Sign-to-Voice and Voice-to-Sign Assistant</title>
+  <meta name="description" content="An assistive AI-driven web application to bridge communication gaps for specially-abled individuals with sign translation and animated avatars.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Fonts & Material Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
+
+  <!-- Core Design System CSS -->
+  <link rel="stylesheet" href="/src/styles/index.css">
+  <link rel="stylesheet" href="/src/styles/components.css">
+  <link rel="stylesheet" href="/src/styles/pages.css">
+  <link rel="stylesheet" href="/src/styles/animations.css">
+
+  <!-- MediaPipe Motion Capture AI SDKs -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+</head>
+<body class="dark-theme">
+  <!-- Futuristic Glowing Canvas Particle/Wave Background -->
+  <div class="glow-bg-container">
+    <div class="glow-sphere sphere-1"></div>
+    <div class="glow-sphere sphere-2"></div>
+    <div class="glow-sphere sphere-3"></div>
+  </div>
+
+  <!-- Main View Grid -->
+  <div class="app-layout">
+    <!-- Web Desktop Navigation -->
+    <header id="desktop-header"></header>
+
+    <!-- Content Workspace -->
+    <main id="app" class="fade-in-content"></main>
+
+    <!-- Mobile Bottom Tab Navigation -->
+    <nav id="mobile-nav" class="mobile-nav-bar"></nav>
+  </div>
+
+  <!-- Toast Notification Overlay -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Accessibility Controls Floating Widget -->
+  <div class="accessibility-widget" id="acc-widget">
+    <button class="acc-toggle-btn" aria-label="Accessibility Settings" id="acc-btn">
+      <span class="material-symbols-outlined">accessibility_new</span>
+    </button>
+    <div class="acc-panel" id="acc-panel">
+      <div class="acc-panel-title">Accessibility</div>
+      <div class="acc-option">
+        <span>Contrast</span>
+        <button id="contrast-toggle" class="acc-action-btn">High Contrast</button>
+      </div>
+      <div class="acc-option">
+        <span>Theme</span>
+        <button id="theme-toggle" class="acc-action-btn">Light Mode</button>
+      </div>
+      <div class="acc-option">
+        <span>Text Size</span>
+        <div class="text-size-controls">
+          <button id="text-decrease" class="acc-size-btn" aria-label="Decrease text size">-</button>
+          <button id="text-increase" class="acc-size-btn" aria-label="Increase text size">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script Entry Point -->
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

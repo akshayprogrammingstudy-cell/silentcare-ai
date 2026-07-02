@@ -1,0 +1,481 @@
+{
+  "anim_hello": {
+    "animation_id": "anim_hello",
+    "label": "Hello",
+    "duration": 1200,
+    "keyframes": [
+      { "time": 0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "smile", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.3, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 150, "y": 70, "rot": -45}, "mouth": "smile", "eyes": "normal", "head": {"x": -2, "y": 2, "rot": -2} },
+      { "time": 0.6, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 170, "y": 55, "rot": -15}, "mouth": "smile", "eyes": "blink", "head": {"x": 2, "y": 0, "rot": 2} },
+      { "time": 1.0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "smile", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} }
+    ],
+    "fallback_steps": [
+      "Bring right hand up to your temple.",
+      "Move the hand outward in a small saluting motion.",
+      "Lower the hand to your side."
+    ]
+  },
+  "anim_yes": {
+    "animation_id": "anim_yes",
+    "label": "Yes",
+    "duration": 1000,
+    "keyframes": [
+      { "time": 0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "smile", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.3, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 90, "rot": 0}, "mouth": "smile", "eyes": "normal", "head": {"x": 0, "y": 8, "rot": 0} },
+      { "time": 0.6, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 110, "rot": 0}, "mouth": "smile", "eyes": "normal", "head": {"x": 0, "y": -4, "rot": 0} },
+      { "time": 0.8, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 90, "rot": 0}, "mouth": "smile", "eyes": "normal", "head": {"x": 0, "y": 8, "rot": 0} },
+      { "time": 1.0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "smile", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} }
+    ],
+    "fallback_steps": [
+      "Form a fist with your right hand at chest height.",
+      "Tilt the fist forward and back, mimicking a nodding head.",
+      "Repeat the nodding motion once."
+    ]
+  },
+  "anim_no": {
+    "animation_id": "anim_no",
+    "label": "No",
+    "duration": 1000,
+    "keyframes": [
+      { "time": 0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "flat", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.3, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 135, "y": 90, "rot": 20}, "mouth": "flat", "eyes": "normal", "head": {"x": -8, "y": 0, "rot": -5} },
+      { "time": 0.6, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 145, "y": 90, "rot": -20}, "mouth": "flat", "eyes": "normal", "head": {"x": 8, "y": 0, "rot": 5} },
+      { "time": 1.0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "flat", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} }
+    ],
+    "fallback_steps": [
+      "Extend your index and middle fingers together, with thumb pointing up.",
+      "Bring the index and middle fingers down to snap against your thumb twice.",
+      "Shake your head slightly side-to-side."
+    ]
+  },
+  "anim_thank_you": {
+    "animation_id": "anim_thank_you",
+    "label": "Thank you",
+    "duration": 1200,
+    "keyframes": [
+      { "time": 0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "smile", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.4, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 105, "y": 65, "rot": -10}, "mouth": "smile", "eyes": "normal", "head": {"x": 0, "y": 2, "rot": 0} },
+      { "time": 0.8, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 120, "y": 110, "rot": 45}, "mouth": "smile", "eyes": "normal", "head": {"x": 0, "y": -2, "rot": 0} },
+      { "time": 1.2, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "smile", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} }
+    ],
+    "fallback_steps": [
+      "Touch the fingertips of your flat right hand to your chin.",
+      "Move your hand forward and down in a welcoming arc toward the other person.",
+      "Smile warmly during the motion."
+    ]
+  },
+  "anim_help": {
+    "animation_id": "anim_help",
+    "label": "Help",
+    "duration": 1200,
+    "keyframes": [
+      { "time": 0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.3, "lh": {"x": 80, "y": 110, "rot": 10}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.6, "lh": {"x": 90, "y": 110, "rot": 0}, "rh": {"x": 100, "y": 100, "rot": 0}, "mouth": "flat", "eyes": "wide", "head": {"x": 0, "y": 4, "rot": 0} },
+      { "time": 0.9, "lh": {"x": 90, "y": 90, "rot": 0}, "rh": {"x": 100, "y": 80, "rot": 0}, "mouth": "flat", "eyes": "wide", "head": {"x": 0, "y": -2, "rot": 0} },
+      { "time": 1.2, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} }
+    ],
+    "fallback_steps": [
+      "Place your flat left hand out, palm facing up, as a base.",
+      "Make a closed fist with your right hand, thumb pointing straight up.",
+      "Place the right hand fist on top of the left palm and lift both slightly."
+    ]
+  },
+  "anim_emergency": {
+    "animation_id": "anim_emergency",
+    "label": "Emergency",
+    "duration": 1400,
+    "keyframes": [
+      { "time": 0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "flat", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.3, "lh": {"x": 75, "y": 80, "rot": -20}, "rh": {"x": 125, "y": 80, "rot": 20}, "mouth": "open", "eyes": "wide", "head": {"x": 0, "y": -5, "rot": 0} },
+      { "time": 0.5, "lh": {"x": 50, "y": 60, "rot": -45}, "rh": {"x": 150, "y": 60, "rot": 45}, "mouth": "open", "eyes": "wide", "head": {"x": 0, "y": 5, "rot": 0} },
+      { "time": 0.8, "lh": {"x": 75, "y": 80, "rot": -20}, "rh": {"x": 125, "y": 80, "rot": 20}, "mouth": "open", "eyes": "wide", "head": {"x": 0, "y": -5, "rot": 0} },
+      { "time": 1.1, "lh": {"x": 50, "y": 60, "rot": -45}, "rh": {"x": 150, "y": 60, "rot": 45}, "mouth": "open", "eyes": "wide", "head": {"x": 0, "y": 5, "rot": 0} },
+      { "time": 1.4, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} }
+    ],
+    "fallback_steps": [
+      "Raise both hands to chest level, fingers spread wide.",
+      "Shake both hands rapidly in a trembling/alert motion.",
+      "Show urgency or a concerned expression on your face."
+    ]
+  },
+  "anim_doctor": {
+    "animation_id": "anim_doctor",
+    "label": "Doctor",
+    "duration": 1200,
+    "keyframes": [
+      { "time": 0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.4, "lh": {"x": 80, "y": 110, "rot": 10}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": -2, "y": 2, "rot": 0} },
+      { "time": 0.7, "lh": {"x": 80, "y": 110, "rot": 10}, "rh": {"x": 90, "y": 100, "rot": -30}, "mouth": "neutral", "eyes": "normal", "head": {"x": 2, "y": 0, "rot": 0} },
+      { "time": 0.9, "lh": {"x": 80, "y": 110, "rot": 10}, "rh": {"x": 90, "y": 95, "rot": -35}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 2, "rot": 0} },
+      { "time": 1.2, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} }
+    ],
+    "fallback_steps": [
+      "Extend your left forearm, palm facing up.",
+      "Bring the tips of your right hand fingers (in an 'M' or 'D' curved shape) to tap on the wrist of your left hand twice, as if taking a pulse."
+    ]
+  },
+  "anim_pain": {
+    "animation_id": "anim_pain",
+    "label": "Pain",
+    "duration": 1200,
+    "keyframes": [
+      { "time": 0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.3, "lh": {"x": 85, "y": 100, "rot": 30}, "rh": {"x": 115, "y": 100, "rot": -30}, "mouth": "sad", "eyes": "closed", "head": {"x": 0, "y": 6, "rot": 0} },
+      { "time": 0.6, "lh": {"x": 90, "y": 100, "rot": -10}, "rh": {"x": 110, "y": 100, "rot": 10}, "mouth": "sad", "eyes": "closed", "head": {"x": -2, "y": 8, "rot": -2} },
+      { "time": 0.9, "lh": {"x": 85, "y": 100, "rot": 30}, "rh": {"x": 115, "y": 100, "rot": -30}, "mouth": "sad", "eyes": "closed", "head": {"x": 2, "y": 6, "rot": 2} },
+      { "time": 1.2, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} }
+    ],
+    "fallback_steps": [
+      "Bring both hands together in front of your chest, pointing your index fingers towards each other.",
+      "Twist your wrists in opposite directions back and forth so the index fingers point past each other repeatedly.",
+      "Maintain a grimacing face expression to indicate pain."
+    ]
+  },
+  "anim_medicine": {
+    "animation_id": "anim_medicine",
+    "label": "Medicine",
+    "duration": 1200,
+    "keyframes": [
+      { "time": 0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.3, "lh": {"x": 80, "y": 110, "rot": 10}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.6, "lh": {"x": 80, "y": 110, "rot": 10}, "rh": {"x": 85, "y": 95, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 4, "rot": 0} },
+      { "time": 0.9, "lh": {"x": 80, "y": 110, "rot": 10}, "rh": {"x": 80, "y": 95, "rot": 10}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 2, "rot": 0} },
+      { "time": 1.2, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} }
+    ],
+    "fallback_steps": [
+      "Hold your left hand out flat, palm facing up.",
+      "Take the middle finger of your right hand and wiggle/rub it in the center of your left palm, mimicking mixing medicine in a mortar."
+    ]
+  },
+  "anim_water": {
+    "animation_id": "anim_water",
+    "label": "Water",
+    "duration": 1100,
+    "keyframes": [
+      { "time": 0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.35, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 115, "y": 70, "rot": -15}, "mouth": "neutral", "eyes": "normal", "head": {"x": -2, "y": 0, "rot": 0} },
+      { "time": 0.6, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 110, "y": 60, "rot": -10}, "mouth": "open", "eyes": "normal", "head": {"x": -4, "y": 2, "rot": 0} },
+      { "time": 0.85, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 115, "y": 70, "rot": -15}, "mouth": "open", "eyes": "normal", "head": {"x": -2, "y": 0, "rot": 0} },
+      { "time": 1.1, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} }
+    ],
+    "fallback_steps": [
+      "Form a 'W' shape with your right hand (index, middle, and ring fingers up; pinky and thumb touching).",
+      "Tap the side of your index finger against your chin twice."
+    ]
+  },
+  "anim_food": {
+    "animation_id": "anim_food",
+    "label": "Food",
+    "duration": 1000,
+    "keyframes": [
+      { "time": 0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.35, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 108, "y": 68, "rot": -10}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 2, "rot": 0} },
+      { "time": 0.55, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 105, "y": 62, "rot": -10}, "mouth": "open", "eyes": "normal", "head": {"x": 0, "y": 4, "rot": 0} },
+      { "time": 0.75, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 105, "y": 68, "rot": -10}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 2, "rot": 0} },
+      { "time": 1.0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} }
+    ],
+    "fallback_steps": [
+      "Bring the fingers of your right hand together in a flattened shape pointing at yourself (an 'O' handshape).",
+      "Tap the tips of your fingers against your mouth twice."
+    ]
+  },
+  "anim_stop": {
+    "animation_id": "anim_stop",
+    "label": "Stop",
+    "duration": 1000,
+    "keyframes": [
+      { "time": 0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "flat", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.3, "lh": {"x": 75, "y": 110, "rot": 20}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "flat", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.6, "lh": {"x": 75, "y": 110, "rot": 20}, "rh": {"x": 95, "y": 100, "rot": -45}, "mouth": "flat", "eyes": "wide", "head": {"x": 0, "y": -4, "rot": 0} },
+      { "time": 1.0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} }
+    ],
+    "fallback_steps": [
+      "Extend your left hand out flat in front of your body, palm facing up.",
+      "Bring your right hand up high, palm flat and fingers straight.",
+      "Bring the right hand down sharply, cutting it vertically to hit the left palm at a right angle."
+    ]
+  },
+  "anim_okay": {
+    "animation_id": "anim_okay",
+    "label": "Okay",
+    "duration": 1000,
+    "keyframes": [
+      { "time": 0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "smile", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.4, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 130, "y": 80, "rot": -20}, "mouth": "smile", "eyes": "normal", "head": {"x": 2, "y": -2, "rot": 2} },
+      { "time": 0.7, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 135, "y": 75, "rot": -10}, "mouth": "smile", "eyes": "blink", "head": {"x": 2, "y": 0, "rot": 2} },
+      { "time": 1.0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "smile", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} }
+    ],
+    "fallback_steps": [
+      "Form the 'O-K' letters in English sign language, or make an OK gesture.",
+      "Touch thumb and index fingers of the right hand to form a circle, raising other three fingers."
+    ]
+  },
+  "anim_sorry": {
+    "animation_id": "anim_sorry",
+    "label": "Sorry",
+    "duration": 1200,
+    "keyframes": [
+      { "time": 0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.3, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 100, "y": 100, "rot": 0}, "mouth": "sad", "eyes": "normal", "head": {"x": 0, "y": 4, "rot": 0} },
+      { "time": 0.6, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 95, "y": 105, "rot": 15}, "mouth": "sad", "eyes": "normal", "head": {"x": 0, "y": 6, "rot": 2} },
+      { "time": 0.9, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 105, "y": 95, "rot": -15}, "mouth": "sad", "eyes": "normal", "head": {"x": 0, "y": 6, "rot": -2} },
+      { "time": 1.2, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} }
+    ],
+    "fallback_steps": [
+      "Make a fist with your right hand, palm facing inward.",
+      "Rub your fist in a circular motion over your chest/heart area a few times.",
+      "Tilt your head slightly forward with a remorseful expression."
+    ]
+  },
+  "anim_please_repeat": {
+    "animation_id": "anim_please_repeat",
+    "label": "Please repeat",
+    "duration": 1400,
+    "keyframes": [
+      { "time": 0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.3, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 100, "y": 100, "rot": 0}, "mouth": "smile", "eyes": "normal", "head": {"x": 0, "y": 2, "rot": 0} },
+      { "time": 0.6, "lh": {"x": 80, "y": 100, "rot": 10}, "rh": {"x": 120, "y": 100, "rot": -10}, "mouth": "smile", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.9, "lh": {"x": 90, "y": 110, "rot": 20}, "rh": {"x": 110, "y": 110, "rot": -20}, "mouth": "smile", "eyes": "normal", "head": {"x": 0, "y": 4, "rot": 0} },
+      { "time": 1.4, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} }
+    ],
+    "fallback_steps": [
+      "Place your flat right hand on your chest and rotate it to mean 'Please'.",
+      "Then extend both hands, palms facing up, and curve your index fingers as if rolling back time, representing 'Repeat'."
+    ]
+  },
+  "anim_call_family": {
+    "animation_id": "anim_call_family",
+    "label": "Call family",
+    "duration": 1400,
+    "keyframes": [
+      { "time": 0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.3, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 125, "y": 70, "rot": -30}, "mouth": "neutral", "eyes": "normal", "head": {"x": -4, "y": 0, "rot": -2} },
+      { "time": 0.6, "lh": {"x": 75, "y": 100, "rot": 10}, "rh": {"x": 125, "y": 100, "rot": -10}, "mouth": "smile", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 1.0, "lh": {"x": 65, "y": 110, "rot": 45}, "rh": {"x": 135, "y": 110, "rot": -45}, "mouth": "smile", "eyes": "normal", "head": {"x": 0, "y": 2, "rot": 0} },
+      { "time": 1.4, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} }
+    ],
+    "fallback_steps": [
+      "Bring your right hand to your ear, pinky and thumb extended like a phone receiver ('Call').",
+      "Then draw a horizontal circle with both 'F' handshapes (index and thumb touch, other fingers up) to represent 'Family'."
+    ]
+  },
+  "anim_ambulance": {
+    "animation_id": "anim_ambulance",
+    "label": "Ambulance",
+    "duration": 1400,
+    "keyframes": [
+      { "time": 0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "flat", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.3, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 150, "y": 55, "rot": -45}, "mouth": "flat", "eyes": "wide", "head": {"x": 0, "y": -4, "rot": 0} },
+      { "time": 0.6, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 50, "rot": 45}, "mouth": "flat", "eyes": "wide", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.9, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 150, "y": 55, "rot": -45}, "mouth": "flat", "eyes": "wide", "head": {"x": 0, "y": -4, "rot": 0} },
+      { "time": 1.4, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} }
+    ],
+    "fallback_steps": [
+      "Raise your right hand above your head.",
+      "Twist your wrist back and forth, opening and closing your fingers, mimicking the flashing light of an emergency vehicle."
+    ]
+  },
+  "anim_accident": {
+    "animation_id": "anim_accident",
+    "label": "Accident",
+    "duration": 1200,
+    "keyframes": [
+      { "time": 0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.3, "lh": {"x": 75, "y": 100, "rot": 20}, "rh": {"x": 125, "y": 100, "rot": -20}, "mouth": "flat", "eyes": "wide", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.6, "lh": {"x": 95, "y": 95, "rot": 0}, "rh": {"x": 105, "y": 95, "rot": 0}, "mouth": "sad", "eyes": "closed", "head": {"x": 0, "y": 6, "rot": 0} },
+      { "time": 1.2, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} }
+    ],
+    "fallback_steps": [
+      "Hold both hands up in front of your chest with fingers spread slightly.",
+      "Bring both hands together quickly until they crash and lock together, illustrating a collision."
+    ]
+  },
+  "anim_breathing_problem": {
+    "animation_id": "anim_breathing_problem",
+    "label": "Breathing problem",
+    "duration": 1400,
+    "keyframes": [
+      { "time": 0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.3, "lh": {"x": 95, "y": 100, "rot": 0}, "rh": {"x": 105, "y": 90, "rot": 0}, "mouth": "open", "eyes": "wide", "head": {"x": 0, "y": -4, "rot": 0} },
+      { "time": 0.6, "lh": {"x": 95, "y": 110, "rot": 0}, "rh": {"x": 105, "y": 100, "rot": 0}, "mouth": "open", "eyes": "wide", "head": {"x": 0, "y": 6, "rot": 0} },
+      { "time": 0.9, "lh": {"x": 95, "y": 100, "rot": 0}, "rh": {"x": 105, "y": 90, "rot": 0}, "mouth": "open", "eyes": "wide", "head": {"x": 0, "y": -4, "rot": 0} },
+      { "time": 1.4, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} }
+    ],
+    "fallback_steps": [
+      "Place both hands flat against your chest.",
+      "Move them up and down rapidly while gasping, indicating shallow or heavy breathing difficulties."
+    ]
+  },
+  "anim_fever": {
+    "animation_id": "anim_fever",
+    "label": "Fever",
+    "duration": 1200,
+    "keyframes": [
+      { "time": 0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.4, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 110, "y": 50, "rot": -30}, "mouth": "sad", "eyes": "normal", "head": {"x": 2, "y": 4, "rot": 2} },
+      { "time": 0.8, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 108, "y": 52, "rot": -25}, "mouth": "sad", "eyes": "closed", "head": {"x": 2, "y": 6, "rot": 2} },
+      { "time": 1.2, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} }
+    ],
+    "fallback_steps": [
+      "Place the back of your right hand flat against your forehead.",
+      "Look slightly tired or warm, simulating checking a high body temperature."
+    ]
+  },
+  "anim_dizzy": {
+    "animation_id": "anim_dizzy",
+    "label": "Dizzy",
+    "duration": 1300,
+    "keyframes": [
+      { "time": 0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.3, "lh": {"x": 65, "y": 80, "rot": -10}, "rh": {"x": 135, "y": 80, "rot": 10}, "mouth": "sad", "eyes": "closed", "head": {"x": -6, "y": 4, "rot": -10} },
+      { "time": 0.6, "lh": {"x": 60, "y": 70, "rot": 10}, "rh": {"x": 140, "y": 70, "rot": -10}, "mouth": "sad", "eyes": "closed", "head": {"x": 6, "y": -2, "rot": 10} },
+      { "time": 0.9, "lh": {"x": 65, "y": 80, "rot": -10}, "rh": {"x": 135, "y": 80, "rot": 10}, "mouth": "sad", "eyes": "closed", "head": {"x": -4, "y": 4, "rot": -5} },
+      { "time": 1.3, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} }
+    ],
+    "fallback_steps": [
+      "Bring both hands near your temples, fingers slightly curved.",
+      "Move both hands in circular spirals around the sides of your head.",
+      "Tilt your head and squint your eyes to represent a loss of balance."
+    ]
+  },
+  "anim_bathroom": {
+    "animation_id": "anim_bathroom",
+    "label": "Bathroom",
+    "duration": 1100,
+    "keyframes": [
+      { "time": 0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.3, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 130, "y": 90, "rot": -20}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.6, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 130, "y": 90, "rot": 20}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.8, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 130, "y": 90, "rot": -20}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 1.1, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} }
+    ],
+    "fallback_steps": [
+      "Form a fist with your right hand, with your thumb tucked between your index and middle fingers (the 'T' handshape).",
+      "Shake your fist side-to-side a few times at chest height."
+    ]
+  },
+  "anim_hungry": {
+    "animation_id": "anim_hungry",
+    "label": "Hungry",
+    "duration": 1200,
+    "keyframes": [
+      { "time": 0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.3, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 105, "y": 85, "rot": -10}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 2, "rot": 0} },
+      { "time": 0.7, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 105, "y": 115, "rot": -10}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 4, "rot": 0} },
+      { "time": 1.2, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} }
+    ],
+    "fallback_steps": [
+      "Curve your right hand into a 'C' shape.",
+      "Place the inner side of the 'C' against your chest/throat and slide it downwards towards your stomach."
+    ]
+  },
+  "anim_tired": {
+    "animation_id": "anim_tired",
+    "label": "Tired",
+    "duration": 1200,
+    "keyframes": [
+      { "time": 0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.4, "lh": {"x": 80, "y": 100, "rot": 10}, "rh": {"x": 120, "y": 100, "rot": -10}, "mouth": "sad", "eyes": "normal", "head": {"x": 0, "y": 2, "rot": 0} },
+      { "time": 0.8, "lh": {"x": 85, "y": 125, "rot": 30}, "rh": {"x": 115, "y": 125, "rot": -30}, "mouth": "sad", "eyes": "closed", "head": {"x": 0, "y": 10, "rot": 0} },
+      { "time": 1.2, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} }
+    ],
+    "fallback_steps": [
+      "Place the fingertips of both hands on your chest near the shoulders.",
+      "Roll your shoulders forward and let your hands slump down while exhaling a sigh."
+    ]
+  },
+  "anim_scared": {
+    "animation_id": "anim_scared",
+    "label": "Scared",
+    "duration": 1100,
+    "keyframes": [
+      { "time": 0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.35, "lh": {"x": 80, "y": 95, "rot": 20}, "rh": {"x": 120, "y": 95, "rot": -20}, "mouth": "open", "eyes": "wide", "head": {"x": 0, "y": 4, "rot": 0} },
+      { "time": 0.7, "lh": {"x": 85, "y": 100, "rot": 10}, "rh": {"x": 115, "y": 100, "rot": -10}, "mouth": "open", "eyes": "wide", "head": {"x": 0, "y": 8, "rot": 0} },
+      { "time": 1.1, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} }
+    ],
+    "fallback_steps": [
+      "Hold both hands open in front of your chest, palms facing in.",
+      "Move them quickly toward each other, spreading fingers, as if shielding yourself from something startling."
+    ]
+  },
+  "anim_need_help": {
+    "animation_id": "anim_need_help",
+    "label": "Need help",
+    "duration": 1400,
+    "keyframes": [
+      { "time": 0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.3, "lh": {"x": 70, "y": 110, "rot": 0}, "rh": {"x": 130, "y": 110, "rot": 0}, "mouth": "flat", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.6, "lh": {"x": 80, "y": 110, "rot": 10}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "flat", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.9, "lh": {"x": 90, "y": 110, "rot": 0}, "rh": {"x": 100, "y": 100, "rot": 0}, "mouth": "flat", "eyes": "wide", "head": {"x": 0, "y": 4, "rot": 0} },
+      { "time": 1.4, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} }
+    ],
+    "fallback_steps": [
+      "Bring both open hands down and in to signify 'Need'.",
+      "Then immediately place your left hand flat, and right hand in a thumb-up fist on top of it, lifting them together to signify 'Help'."
+    ]
+  },
+  "anim_i_am_okay": {
+    "animation_id": "anim_i_am_okay",
+    "label": "I am okay",
+    "duration": 1300,
+    "keyframes": [
+      { "time": 0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "smile", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.3, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 100, "y": 100, "rot": 0}, "mouth": "smile", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.7, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 130, "y": 80, "rot": -20}, "mouth": "smile", "eyes": "normal", "head": {"x": 0, "y": -2, "rot": 0} },
+      { "time": 1.0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 135, "y": 75, "rot": -10}, "mouth": "smile", "eyes": "blink", "head": {"x": 0, "y": 2, "rot": 0} },
+      { "time": 1.3, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "smile", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} }
+    ],
+    "fallback_steps": [
+      "Point to your chest with your index finger ('I').",
+      "Then raise your right hand, touching your thumb to your chest with other fingers spread out ('Fine/Okay')."
+    ]
+  },
+  "anim_hospital": {
+    "animation_id": "anim_hospital",
+    "label": "Hospital",
+    "duration": 1200,
+    "keyframes": [
+      { "time": 0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.4, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 90, "y": 65, "rot": -35}, "mouth": "neutral", "eyes": "normal", "head": {"x": -2, "y": 2, "rot": 0} },
+      { "time": 0.8, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 80, "y": 70, "rot": -45}, "mouth": "neutral", "eyes": "normal", "head": {"x": -2, "y": 4, "rot": 0} },
+      { "time": 1.2, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} }
+    ],
+    "fallback_steps": [
+      "Use the index and middle fingers of your right hand to form an 'H'.",
+      "Draw a cross symbol on your upper left arm, first moving down, then across."
+    ]
+  },
+  "anim_danger": {
+    "animation_id": "anim_danger",
+    "label": "Danger",
+    "duration": 1200,
+    "keyframes": [
+      { "time": 0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "flat", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.3, "lh": {"x": 75, "y": 90, "rot": 10}, "rh": {"x": 125, "y": 90, "rot": -10}, "mouth": "open", "eyes": "wide", "head": {"x": 0, "y": -4, "rot": 0} },
+      { "time": 0.6, "lh": {"x": 70, "y": 80, "rot": 20}, "rh": {"x": 130, "y": 80, "rot": -20}, "mouth": "open", "eyes": "wide", "head": {"x": 0, "y": 2, "rot": 0} },
+      { "time": 0.9, "lh": {"x": 75, "y": 90, "rot": 10}, "rh": {"x": 125, "y": 90, "rot": -10}, "mouth": "open", "eyes": "wide", "head": {"x": 0, "y": -4, "rot": 0} },
+      { "time": 1.2, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} }
+    ],
+    "fallback_steps": [
+      "Raise both hands to chest height, making fists.",
+      "Bring them down forcefully side-by-side while maintaining a serious, warning facial expression."
+    ]
+  },
+  "anim_wait": {
+    "animation_id": "anim_wait",
+    "label": "Wait",
+    "duration": 1200,
+    "keyframes": [
+      { "time": 0, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.4, "lh": {"x": 75, "y": 110, "rot": 20}, "rh": {"x": 125, "y": 110, "rot": -20}, "mouth": "flat", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} },
+      { "time": 0.8, "lh": {"x": 70, "y": 105, "rot": 15}, "rh": {"x": 120, "y": 105, "rot": -15}, "mouth": "flat", "eyes": "blink", "head": {"x": 0, "y": 2, "rot": 0} },
+      { "time": 1.2, "lh": {"x": 60, "y": 150, "rot": 0}, "rh": {"x": 140, "y": 150, "rot": 0}, "mouth": "neutral", "eyes": "normal", "head": {"x": 0, "y": 0, "rot": 0} }
+    ],
+    "fallback_steps": [
+      "Hold both hands out in front of you, palms facing your chest, fingers spread.",
+      "Wiggle your fingers slowly while moving the hands slightly in a circle."
+    ]
+  }
+}

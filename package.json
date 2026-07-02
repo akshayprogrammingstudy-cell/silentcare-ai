@@ -1,0 +1,16 @@
+{
+  "name": "silentcare-ai-root",
+  "version": "1.0.0",
+  "description": "SilentCare AI: Sign-to-Voice and Voice-to-Sign Assistant",
+  "scripts": {
+    "install:all": "npm install && npm install --prefix client && npm install --prefix server",
+    "server": "npm run dev --prefix server",
+    "client": "npm run dev --prefix client",
+    "dev": "npx concurrently \"npm run server\" \"npm run client\"",
+    "start": "npm run dev"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

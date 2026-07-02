@@ -1,0 +1,734 @@
+/* ==========================================
+   SILENTCARE AI - COMPONENT STYLES
+   ========================================== */
+
+/* 1. Header & Navigation (Desktop & Mobile) */
+.desktop-nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4.5rem;
+  background: rgba(10, 15, 30, 0.4);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-bottom: 1px solid var(--border-color);
+  z-index: 50;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 3rem;
+  box-shadow: var(--shadow-sm);
+}
+
+body.light-theme .desktop-nav {
+  background: rgba(255, 255, 255, 0.65);
+}
+
+body.high-contrast-theme .desktop-nav {
+  background: #000000;
+  border-bottom: 2px solid #ffffff;
+}
+
+@media (min-width: 1024px) {
+  .desktop-nav {
+    display: flex;
+  }
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body.high-contrast-theme .brand-logo {
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+  color: var(--primary);
+}
+
+.brand-logo svg {
+  width: 32px;
+  height: 32px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-item {
+  position: relative;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  transition: color var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-item:hover,
+.nav-item.active {
+  color: var(--text-primary);
+}
+
+.nav-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+  border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0;
+}
+
+body.high-contrast-theme .nav-item.active::after {
+  background: var(--primary);
+  height: 4px;
+}
+
+/* Mobile Bottom Tab Navigation */
+.mobile-nav-bar {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4.5rem;
+  background: rgba(10, 15, 30, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border-color);
+  z-index: 50;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 0.5rem;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+}
+
+body.light-theme .mobile-nav-bar {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+}
+
+body.high-contrast-theme .mobile-nav-bar {
+  background: #000000;
+  border-top: 2px solid #ffffff;
+}
+
+@media (min-width: 1024px) {
+  .mobile-nav-bar {
+    display: none;
+  }
+}
+
+.mobile-nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--text-muted);
+  gap: 0.25rem;
+  min-width: 48px;
+  min-height: 48px;
+  transition: color var(--transition-fast);
+}
+
+.mobile-nav-item span {
+  font-size: 1.5rem;
+}
+
+.mobile-nav-item label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mobile-nav-item.active {
+  color: var(--primary-light);
+}
+
+body.high-contrast-theme .mobile-nav-item.active {
+  color: var(--primary);
+}
+
+
+/* 2. Camera Card & Viewport */
+.camera-card {
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  background: #000;
+}
+
+.camera-stream {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #090e1a;
+}
+
+/* Mirror Mode support */
+.camera-stream.mirrored {
+  transform: scaleX(-1);
+}
+
+.camera-controls-overlay {
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  z-index: 10;
+  padding: 0 1rem;
+}
+
+.camera-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(17, 24, 39, 0.7);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.camera-btn:hover {
+  background: var(--primary);
+  transform: scale(1.05);
+}
+
+.camera-error-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 15, 30, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+  z-index: 15;
+}
+
+.camera-error-icon {
+  font-size: 3rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+
+/* 3. SVG Avatar Viewer Frame */
+.avatar-viewer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  border-radius: var(--border-radius-lg);
+  position: relative;
+}
+
+.avatar-svg-container {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: radial-gradient(circle, rgba(13, 148, 136, 0.1) 0%, rgba(10, 15, 30, 0.4) 100%);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--border-color);
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body.light-theme .avatar-svg-container {
+  background: radial-gradient(circle, rgba(13, 148, 136, 0.05) 0%, rgba(255, 255, 255, 0.4) 100%);
+}
+
+body.high-contrast-theme .avatar-svg-container {
+  background: #000000;
+  border: 2px solid #ffffff;
+}
+
+.avatar-svg {
+  width: 100%;
+  height: 100%;
+  max-height: 380px;
+}
+
+.avatar-controls {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.avatar-playback-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.avatar-control-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: var(--border-radius-sm);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  min-height: 48px;
+  transition: all var(--transition-fast);
+}
+
+.avatar-control-btn:hover {
+  border-color: var(--primary);
+  background: var(--primary-glow);
+}
+
+.avatar-control-btn.primary {
+  background: var(--primary);
+  color: white;
+}
+
+.avatar-control-btn.primary:hover {
+  background: var(--primary-light);
+}
+
+.speed-select-group {
+  display: flex;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+}
+
+body.high-contrast-theme .speed-select-group {
+  background: #000;
+  border: 1px solid #fff;
+}
+
+.speed-btn {
+  padding: 0.5rem 1rem;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  min-height: 48px;
+  transition: all var(--transition-fast);
+  border-right: 1px solid var(--border-color);
+}
+
+.speed-btn:last-child {
+  border-right: none;
+}
+
+.speed-btn.active {
+  background: var(--primary);
+  color: white;
+}
+
+body.high-contrast-theme .speed-btn.active {
+  background: #fff;
+  color: #000;
+}
+
+/* Word progress indicator */
+.word-progress-box {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  padding: 0.75rem;
+  font-size: 0.95rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  min-height: 2.8rem;
+  align-items: center;
+}
+
+.word-pill {
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  color: var(--text-secondary);
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.word-pill.active {
+  background: var(--primary-glow);
+  color: var(--primary-light);
+  font-weight: 700;
+  border: 1px solid var(--primary);
+}
+
+body.high-contrast-theme .word-pill.active {
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #ffffff;
+}
+
+.word-pill.done {
+  color: var(--text-muted);
+}
+
+
+/* 4. Chat Bubbles */
+.chat-messages-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  overflow-y: auto;
+  border-radius: var(--border-radius-md);
+  background: rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--border-color);
+  height: 450px;
+}
+
+.chat-bubble-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 75%;
+}
+
+.chat-bubble-wrapper.sign {
+  align-self: flex-start;
+}
+
+.chat-bubble-wrapper.voice {
+  align-self: flex-end;
+}
+
+.chat-bubble-header {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+  padding: 0 0.5rem;
+}
+
+.chat-bubble-wrapper.voice .chat-bubble-header {
+  text-align: right;
+}
+
+.chat-bubble {
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--border-radius-md);
+  font-size: 0.95rem;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.chat-bubble-wrapper.sign .chat-bubble {
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(13, 148, 136, 0.1) 100%);
+  border: 1px solid var(--primary);
+  border-bottom-left-radius: 4px;
+}
+
+.chat-bubble-wrapper.voice .chat-bubble {
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(244, 63, 94, 0.1) 100%);
+  border: 1px solid var(--accent);
+
+  border-bottom-right-radius: 4px;
+}
+
+body.high-contrast-theme .chat-bubble-wrapper.sign .chat-bubble {
+  background: #000;
+  border: 2px solid #ffffff;
+}
+
+body.high-contrast-theme .chat-bubble-wrapper.voice .chat-bubble {
+  background: #000;
+  border: 2px solid #facc15;
+}
+
+.chat-bubble-content {
+  color: var(--text-primary);
+  word-break: break-word;
+}
+
+.chat-bubble-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  align-items: center;
+  margin-top: 0.25rem;
+}
+
+.chat-action-btn {
+  background: transparent;
+  color: var(--text-secondary);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.chat-action-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+}
+
+.chat-bubble-time {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-align: right;
+  align-self: flex-end;
+}
+
+
+/* 5. Fallback Sign Instruction Cards */
+.fallback-cards-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.fallback-card {
+  padding: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.fallback-step-num {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.fallback-step-text {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+
+/* 6. Giant SOS Button & Radar Ring */
+.sos-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 240px;
+  height: 240px;
+  margin: 2rem auto;
+}
+
+.sos-trigger {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--emergency) 0%, #b91c1c 100%);
+  color: white;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 40px var(--emergency-glow);
+  border: 4px solid rgba(255, 255, 255, 0.25);
+  position: relative;
+  z-index: 5;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.sos-trigger:active {
+  transform: scale(0.95);
+}
+
+.sos-trigger span {
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  margin-top: 0.25rem;
+  opacity: 0.9;
+}
+
+.sos-pulse-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid var(--emergency);
+  opacity: 0.75;
+  z-index: 1;
+  animation: radar-pulse 3s infinite linear;
+}
+
+.sos-pulse-ring:nth-child(2) {
+  animation-delay: 1s;
+}
+
+.sos-pulse-ring:nth-child(3) {
+  animation-delay: 2s;
+}
+
+
+/* 7. Toast Alerts Overlay */
+.toast-container {
+  position: fixed;
+  bottom: 5.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 90%;
+  max-width: 400px;
+  pointer-events: none;
+}
+
+@media (min-width: 1024px) {
+  .toast-container {
+    bottom: 2rem;
+    left: auto;
+    right: 2rem;
+    transform: none;
+  }
+}
+
+.toast {
+  pointer-events: auto;
+  padding: 1rem 1.25rem;
+  border-radius: var(--border-radius-sm);
+  background: var(--bg-card);
+  backdrop-filter: blur(15px);
+  border-left: 4px solid var(--primary);
+  border-top: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: var(--shadow-md);
+  animation: toast-slide-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: opacity 0.3s ease;
+}
+
+.toast.success {
+  border-left-color: var(--primary);
+}
+
+.toast.error {
+  border-left-color: var(--emergency);
+}
+
+.toast.warning {
+  border-left-color: var(--accent);
+}
+
+.toast-message {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.toast-close {
+  margin-left: auto;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+.toast-close:hover {
+  color: var(--text-primary);
+}
+
+/* ==========================================
+   ASL Fingerspelling Hand Styles
+   ========================================== */
+.hand-skin {
+  fill: #fddfbb !important;
+  stroke: #92400e !important;
+  stroke-width: 3.5px !important;
+  stroke-linejoin: round !important;
+  stroke-linecap: round !important;
+}
+
+.hand-line {
+  fill: none !important;
+  stroke: #92400e !important;
+  stroke-width: 3px !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+}
+
+/* Light theme overrides for fingerspelling hand outline color */
+body.light-theme .hand-skin {
+  fill: #ffe4c4 !important;
+  stroke: #9a3412 !important;
+}
+
+body.light-theme .hand-line {
+  stroke: #9a3412 !important;
+}
+
+/* High contrast accessibility theme overrides */
+body.high-contrast-theme .hand-skin {
+  fill: #000000 !important;
+  stroke: #ffffff !important;
+  stroke-width: 4px !important;
+}
+
+body.high-contrast-theme .hand-line {
+  fill: none !important;
+  stroke: #ffffff !important;
+  stroke-width: 4px !important;
+}
+
+/* Avatar overflow fix - ensure SVG hands don't clip */
+.avatar-svg {
+  overflow: visible !important;
+}
