@@ -103,12 +103,6 @@ export const SignToVoicePage = {
               </button>
             </div>
           </div>
-          
-          <div class="glass-card" style="margin-top: 1.5rem; padding: 1.25rem; font-size: 0.85rem; color: var(--text-muted);">
-            <p style="margin-bottom: 0.5rem; font-weight: bold; color: var(--text-secondary);">💡 ${t('demo_inst')}</p>
-            <p>${t('demo_inst_1')}</p>
-            <p>${t('demo_inst_2')}</p>
-          </div>
         </div>
 
         <!-- Right Side: Translation Outputs & Simulators -->

@@ -78,7 +78,7 @@ export class AvatarComponent {
 
         <div class="avatar-svg-container">
           <!-- 2D SVG Carey Viewport (200x200 Coordinate Space) -->
-          <svg class="avatar-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+          <svg class="avatar-svg" viewBox="35 15 130 175" xmlns="http://www.w3.org/2000/svg" overflow="visible">
             <defs>
               <!-- Clothing and coat color fills -->
               <linearGradient id="scrubs-grad" x1="0%" y1="0%" x2="100%" y2="100%">
