@@ -66,7 +66,7 @@ app.use((err, req, res, next) => {
 });
 
 // Start listening
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`==================================================`);
   console.log(`SilentCare AI Server is running on port ${PORT}`);
   console.log(`Health Check: http://localhost:${PORT}/api/health`);
