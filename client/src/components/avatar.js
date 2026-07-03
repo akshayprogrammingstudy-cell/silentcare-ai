@@ -762,8 +762,8 @@ export class AvatarComponent {
         if (handPaths) {
           if (this.elements.rightHandDefault) this.elements.rightHandDefault.style.display = 'none';
           this.elements.rightHandSpelling.style.display = 'block';
-          // Scale and translate the fingerspelling paths to center at (0,0) and match the full size of the hand
-          this.elements.rightHandSpelling.innerHTML = `<g transform="scale(0.85) translate(-50, -72)">${handPaths}</g>`;
+          // Scale and translate the fingerspelling paths to center at (0,0) and make it extremely visible
+          this.elements.rightHandSpelling.innerHTML = `<g transform="scale(1.8) translate(-50, -70)">${handPaths}</g>`;
         }
       }
 
