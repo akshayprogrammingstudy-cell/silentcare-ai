@@ -208,10 +208,13 @@ export class AvatarComponent {
             <!-- 6. RIGHT ARM & HAND (White coat sleeve) -->
             <path id="avatar-right-arm" d="M 125,65 Q 145,90 132,115" fill="none" stroke="url(#labcoat-grad)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
             <g id="avatar-right-hand" transform="translate(132, 115) scale(1.2)">
-              <circle cx="0" cy="0" r="10" fill="url(#avatar-skin-grad)" stroke="rgba(0,0,0,0.12)" stroke-width="1" />
-              <path d="M 6,-2 Q 8,-12 4,-12 Q 2,-12 2,-2" fill="url(#avatar-skin-grad)" />
-              <path d="M 2,-2 Q 2,-14 -1,-14 Q -4,-14 -2,-2" fill="url(#avatar-skin-grad)" />
-              <path d="M -2,-2 Q -5,-12 -7,-10 Q -9,-8 -4,-1" fill="url(#avatar-skin-grad)" />
+              <g id="avatar-right-hand-default">
+                <circle cx="0" cy="0" r="10" fill="url(#avatar-skin-grad)" stroke="rgba(0,0,0,0.12)" stroke-width="1" />
+                <path d="M 6,-2 Q 8,-12 4,-12 Q 2,-12 2,-2" fill="url(#avatar-skin-grad)" />
+                <path d="M 2,-2 Q 2,-14 -1,-14 Q -4,-14 -2,-2" fill="url(#avatar-skin-grad)" />
+                <path d="M -2,-2 Q -5,-12 -7,-10 Q -9,-8 -4,-1" fill="url(#avatar-skin-grad)" />
+              </g>
+              <g id="avatar-right-hand-spelling" style="display: none;"></g>
             </g>
           </svg>
         </div>
@@ -280,6 +283,8 @@ export class AvatarComponent {
       rightArm: this.container.querySelector('#avatar-right-arm'),
       leftHand: this.container.querySelector('#avatar-left-hand'),
       rightHand: this.container.querySelector('#avatar-right-hand'),
+      rightHandDefault: this.container.querySelector('#avatar-right-hand-default'),
+      rightHandSpelling: this.container.querySelector('#avatar-right-hand-spelling'),
       leftEyeGroup: this.container.querySelector('#avatar-left-eye'),
       leftEyeBlink: this.container.querySelector('#avatar-left-blink'),
       rightEyeGroup: this.container.querySelector('#avatar-right-eye'),
@@ -385,8 +390,10 @@ export class AvatarComponent {
     this.showFallbackInstructions();
 
     // Reset right hand to cartoon outline when loading new sequence
-    if (this.elements.rightHand && this.defaultRightHandHtml) {
-      this.elements.rightHand.innerHTML = this.defaultRightHandHtml;
+    if (this.elements.rightHandDefault) this.elements.rightHandDefault.style.display = 'block';
+    if (this.elements.rightHandSpelling) {
+      this.elements.rightHandSpelling.style.display = 'none';
+      this.elements.rightHandSpelling.innerHTML = '';
     }
 
     // Set subtitle display initial state
@@ -749,12 +756,14 @@ export class AvatarComponent {
       const letterIdx = Math.min(Math.floor(progress * L), L - 1);
       const activeChar = L > 0 ? word[letterIdx] : '';
 
-      if (this.elements.rightHand && activeChar && activeChar !== lastRenderedChar) {
+      if (this.elements.rightHandSpelling && activeChar && activeChar !== lastRenderedChar) {
         lastRenderedChar = activeChar;
         const handPaths = Fingerspelling.getLetterPaths(activeChar);
         if (handPaths) {
+          if (this.elements.rightHandDefault) this.elements.rightHandDefault.style.display = 'none';
+          this.elements.rightHandSpelling.style.display = 'block';
           // Scale and translate the fingerspelling paths to center at (0,0) and match the full size of the hand
-          this.elements.rightHand.innerHTML = `<g transform="scale(0.58) translate(-50, -55)">${handPaths}</g>`;
+          this.elements.rightHandSpelling.innerHTML = `<g transform="scale(0.85) translate(-50, -72)">${handPaths}</g>`;
         }
       }
 
@@ -797,8 +806,8 @@ export class AvatarComponent {
         rot: Math.sin(progress * Math.PI * 4) * 1.5 
       };
 
-      // Right hand position for fingerspelling (lifted up near shoulder)
-      const baseSpellingRh = { x: 135, y: 75, rot: -10 };
+      // Right hand position for fingerspelling (lifted up and extended outward to prevent arm bunching)
+      const baseSpellingRh = { x: 148, y: 92, rot: -12 };
       
       // Add slight letter-dependent variation to fingerspelling right hand coordinates
       const letterHash = activeChar.charCodeAt(0) || 65;
@@ -806,7 +815,7 @@ export class AvatarComponent {
       
       this.state.rh = {
         x: baseSpellingRh.x + letterOffset * 2,
-        y: baseSpellingRh.y + (letterHash % 3) * 3,
+        y: baseSpellingRh.y + letterOffset * 2,
         rot: baseSpellingRh.rot + letterOffset * 5
       };
 
@@ -837,9 +846,11 @@ export class AvatarComponent {
           });
         }
 
-        // Reset Carey's hand to default cartoon hand when spelling of this word completes
-        if (this.elements.rightHand && this.defaultRightHandHtml) {
-          this.elements.rightHand.innerHTML = this.defaultRightHandHtml;
+        // Restore Carey's hand to default cartoon hand when spelling of this word completes
+        if (this.elements.rightHandDefault) this.elements.rightHandDefault.style.display = 'block';
+        if (this.elements.rightHandSpelling) {
+          this.elements.rightHandSpelling.style.display = 'none';
+          this.elements.rightHandSpelling.innerHTML = '';
         }
 
         this.currentAnimIndex++;
@@ -922,8 +933,10 @@ export class AvatarComponent {
     this.updatePlayBtnUI();
 
     // Restore cartoon hand shape
-    if (this.elements.rightHand && this.defaultRightHandHtml) {
-      this.elements.rightHand.innerHTML = this.defaultRightHandHtml;
+    if (this.elements.rightHandDefault) this.elements.rightHandDefault.style.display = 'block';
+    if (this.elements.rightHandSpelling) {
+      this.elements.rightHandSpelling.style.display = 'none';
+      this.elements.rightHandSpelling.innerHTML = '';
     }
   }
 
@@ -978,8 +991,10 @@ export class AvatarComponent {
     }
 
     // Restore cartoon hand shape
-    if (this.elements.rightHand && this.defaultRightHandHtml) {
-      this.elements.rightHand.innerHTML = this.defaultRightHandHtml;
+    if (this.elements.rightHandDefault) this.elements.rightHandDefault.style.display = 'block';
+    if (this.elements.rightHandSpelling) {
+      this.elements.rightHandSpelling.style.display = 'none';
+      this.elements.rightHandSpelling.innerHTML = '';
     }
 
     if (this.onPlaybackComplete) this.onPlaybackComplete();
