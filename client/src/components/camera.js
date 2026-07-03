@@ -557,73 +557,98 @@ export class CameraComponent {
                       middleTip, middleMCP, middlePIP, ringTip, ringMCP, ringPIP,
                       pinkyTip, pinkyMCP, pinkyPIP, wrist, idxExt, midExt,
                       ringExt, pinkyExt, thumbExt, allClosed, allOpen, dist }) {
-    // Only attempt fingerspelling in mid/low hand position (not raised = word sign)
-    if (wrist.y < 0.45) return null;
+    // Only attempt fingerspelling in mid/low hand position
+    if (wrist.y < 0.40) return null;
 
     const d = dist;
 
-    // A — closed fist, thumb rests on side of index
-    if (allClosed && !thumbExt && thumbTip.x > indexMCP.x - 0.04) return 'A';
+    // 1. A — closed fist, thumb rests on side of index MCP
+    if (allClosed && !thumbExt && thumbTip.x > indexMCP.x - 0.05) return 'A';
 
-    // B — four fingers extended straight up, thumb tucked
-    if (idxExt && midExt && ringExt && pinkyExt && !thumbExt &&
-        d(indexTip, pinkyTip) < 0.08) return 'B';
+    // 2. B — four fingers extended straight up, thumb tucked
+    if (idxExt && midExt && ringExt && pinkyExt && d(indexTip, pinkyTip) < 0.09) return 'B';
 
-    // C — curved open hand (C-shape), fingers partially bent
-    if (!allClosed && !allOpen && d(thumbTip, pinkyTip) < 0.25 &&
-        d(thumbTip, indexTip) < 0.15) return 'C';
+    // 3. C — curved open hand forming C shape
+    if (!allClosed && !allOpen && d(thumbTip, pinkyTip) < 0.26 && d(thumbTip, indexTip) < 0.16) {
+      if (indexTip.y > indexMCP.y - 0.03 && thumbTip.y > indexMCP.y) return 'C';
+    }
 
-    // D — index up, middle+ring+pinky curl touching thumb
-    if (idxExt && !midExt && !ringExt && !pinkyExt &&
-        d(middleTip, thumbTip) < 0.05 && d(ringTip, thumbTip) < 0.06) return 'D';
+    // 4. D — index up, middle+ring+pinky curled touching or near thumb
+    if (idxExt && !midExt && !ringExt && !pinkyExt && d(middleTip, thumbTip) < 0.08) return 'D';
 
-    // E — all fingers curled/hooked, thumb tucked under
-    if (!idxExt && !midExt && !ringExt && !pinkyExt && !thumbExt &&
-        d(indexTip, thumbTip) < 0.06) return 'E';
+    // 5. E — all fingers curled tight, thumb tucked under tips
+    if (!idxExt && !midExt && !ringExt && !pinkyExt && d(indexTip, thumbTip) < 0.07) return 'E';
 
-    // F — index+thumb form OK circle, other three extended
-    if (d(thumbTip, indexTip) < 0.04 && midExt && ringExt && pinkyExt) return 'F';
+    // 6. F — index+thumb form circle, other three extended (OK sign)
+    if (d(thumbTip, indexTip) < 0.055 && midExt && ringExt && pinkyExt) return 'F';
 
-    // G — index pointing sideways (horizontal extension)
-    if (idxExt && !midExt && !ringExt && !pinkyExt &&
-        Math.abs(indexTip.y - indexMCP.y) < 0.04) return 'G';
+    // 7. G — index pointing sideways (horizontal index extension), thumb near index
+    if (idxExt && !midExt && !ringExt && !pinkyExt && Math.abs(indexTip.y - indexMCP.y) < 0.06) {
+      if (thumbTip.y < indexPIP.y) return 'G';
+    }
 
-    // H — index+middle extended horizontal side-by-side
-    if (idxExt && midExt && !ringExt && !pinkyExt &&
-        Math.abs(indexTip.y - middleTip.y) < 0.03 &&
-        d(indexTip, middleTip) < 0.06) return 'H';
+    // 8. H — index+middle extended horizontally side-by-side
+    if (idxExt && midExt && !ringExt && !pinkyExt && d(indexTip, middleTip) < 0.065) {
+      if (Math.abs(indexTip.y - middleTip.y) < 0.045) return 'H';
+    }
 
-    // I — pinky only extended, others closed
-    if (!idxExt && !midExt && !ringExt && pinkyExt && allClosed) return 'I';
+    // 9. I — pinky only extended straight up
+    if (!idxExt && !midExt && !ringExt && pinkyExt) return 'I';
 
-    // K — index + middle extended in V-shape, thumb points up
-    if (idxExt && midExt && !ringExt && !pinkyExt && thumbExt &&
-        d(indexTip, middleTip) > 0.06) return 'K';
+    // 10. J — pinky extended, tilted/moving (we use simplified gesture matching I/J)
+    if (!idxExt && !midExt && !ringExt && pinkyExt && thumbTip.y > thumbMCP.y) {
+      if (Math.abs(pinkyTip.x - wrist.x) > 0.08) return 'J';
+    }
 
-    // L — index up, thumb out, others closed (L-shape)
-    if (idxExt && !midExt && !ringExt && !pinkyExt && thumbExt &&
-        thumbTip.y < wrist.y) return 'L';
+    // 11. K — index + middle extended in V-shape, thumb extended pointing up touching index joint
+    if (idxExt && midExt && !ringExt && !pinkyExt && d(thumbTip, indexPIP) < 0.07) return 'K';
 
-    // O — all fingertips pinched to thumb (round O)
-    if (d(indexTip, thumbTip) < 0.05 && d(middleTip, thumbTip) < 0.06 &&
-        d(ringTip, thumbTip) < 0.07 && d(pinkyTip, thumbTip) < 0.08) return 'O';
+    // 12. L — index up, thumb out horizontally (L shape)
+    if (idxExt && !midExt && !ringExt && !pinkyExt && thumbExt && thumbTip.y < indexMCP.y) return 'L';
 
-    // R — index+middle crossed
-    if (idxExt && midExt && !ringExt && !pinkyExt &&
-        d(indexTip, middleTip) < 0.03 && indexTip.x > middleTip.x) return 'R';
+    // 13. M — thumb tucked between ring and pinky (all fingers curled)
+    if (allClosed && thumbTip.x < ringMCP.x && thumbTip.x > pinkyMCP.x) return 'M';
 
-    // S — closed fist, thumb crosses over knuckles
-    if (allClosed && thumbExt && thumbTip.y > indexMCP.y) return 'S';
+    // 14. N — thumb tucked between index and middle (all fingers curled)
+    if (allClosed && thumbTip.x < middleMCP.x && thumbTip.x > ringMCP.x) return 'N';
 
-    // V — index+middle extended, spread apart (peace sign)
-    if (idxExt && midExt && !ringExt && !pinkyExt &&
-        d(indexTip, middleTip) > 0.07) return 'V';
+    // 15. O — all fingertips pinched to thumb forming round O
+    if (d(indexTip, thumbTip) < 0.06 && d(middleTip, thumbTip) < 0.07 && d(ringTip, thumbTip) < 0.08) return 'O';
 
-    // W — index+middle+ring extended, spread
+    // 16. P — K shape but pointing downwards
+    if (indexTip.y > indexMCP.y && middleTip.y > middleMCP.y && d(thumbTip, middleTip) < 0.08) return 'P';
+
+    // 17. Q — G shape but pointing downwards
+    if (indexTip.y > indexMCP.y && thumbTip.y > thumbMCP.y && !midExt && !ringExt && !pinkyExt) return 'Q';
+
+    // 18. R — index and middle crossed
+    if (idxExt && midExt && !ringExt && !pinkyExt && d(indexTip, middleTip) < 0.04 && indexTip.x > middleTip.x) return 'R';
+
+    // 19. S — closed fist, thumb crosses over knuckles (front of fingers)
+    if (allClosed && d(thumbTip, middlePIP) < 0.06) return 'S';
+
+    // 20. T — thumb tucked under index finger PIP (all fingers curled)
+    if (allClosed && thumbTip.x > indexMCP.x && thumbTip.x < middleMCP.x) return 'T';
+
+    // 21. U — index + middle extended straight up, touching each other
+    if (idxExt && midExt && !ringExt && !pinkyExt && d(indexTip, middleTip) < 0.04) return 'U';
+
+    // 22. V — index + middle extended straight up, spread (V/Peace sign)
+    if (idxExt && midExt && !ringExt && !pinkyExt && d(indexTip, middleTip) >= 0.04) return 'V';
+
+    // 23. W — index+middle+ring extended and spread
     if (idxExt && midExt && ringExt && !pinkyExt) return 'W';
 
-    // Y — pinky + thumb both out, others curled
+    // 24. X — index finger bent/hooked, other fingers curled
+    if (!idxExt && !midExt && !ringExt && !pinkyExt && indexTip.y > indexPIP.y - 0.02) {
+      if (d(indexTip, indexMCP) < 0.08) return 'X';
+    }
+
+    // 25. Y — pinky + thumb extended, middle three curled (hang loose sign)
     if (!idxExt && !midExt && !ringExt && pinkyExt && thumbExt) return 'Y';
+
+    // 26. Z — index pointing horizontally, lower hand position
+    if (idxExt && !midExt && !ringExt && !pinkyExt && wrist.y > 0.60) return 'Z';
 
     return null;
   }
