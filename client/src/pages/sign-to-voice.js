@@ -20,6 +20,7 @@ export const SignToVoicePage = {
   confidence: 0,
   activeCategory: 'general',
   compiledSentence: [], // Array of compiled words
+  translatedSentence: '', // AI translated version of compiledSentence
 
   /**
    * Initialize page layout and bind camera tracks
@@ -31,6 +32,7 @@ export const SignToVoicePage = {
     this.confidence = 0;
     this.activeCategory = 'general';
     this.compiledSentence = [];
+    this.translatedSentence = '';
 
     this.render();
     
@@ -83,6 +85,15 @@ export const SignToVoicePage = {
             
             <div style="background: rgba(10,15,30,0.4); border: 1px solid var(--border-color); border-radius: 8px; padding: 0.75rem; min-height: 3rem; margin-bottom: 0.75rem; color: var(--text-primary); font-size: 1rem; line-height: 1.4; display: flex; align-items: center;" id="compiled-sentence-view">
               <span style="color: var(--text-muted); font-size: 0.9rem;">(Consecutive gesture translations compile here to form long sentences...)</span>
+            </div>
+
+            <!-- AI Translation Panel -->
+            <div id="ai-translation-wrap" style="display: none; margin-bottom: 0.75rem;">
+              <div style="font-size: 0.75rem; color: var(--accent-light); margin-bottom: 0.25rem; font-weight: bold; display: flex; align-items: center; gap: 0.25rem;">
+                <span class="material-symbols-outlined" style="font-size: 0.9rem;">psychology</span> AI Translated Sentence:
+              </div>
+              <div style="background: rgba(20, 184, 166, 0.08); border: 1.5px solid var(--accent); border-radius: 8px; padding: 0.75rem; min-height: 3rem; color: var(--accent-light); font-size: 1.1rem; font-weight: 700; line-height: 1.4; display: flex; align-items: center;" id="ai-translated-sentence-view">
+              </div>
             </div>
             
             <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
@@ -268,10 +279,10 @@ export const SignToVoicePage = {
     });
 
     speakSentenceBtn.addEventListener('click', async () => {
-      const text = this.getCompiledText();
-      if (text.trim() !== '') {
+      const textToSpeak = this.translatedSentence || this.getCompiledText();
+      if (textToSpeak.trim() !== '') {
         speakSentenceBtn.style.background = 'var(--accent)';
-        await Speech.speak(text);
+        await Speech.speak(textToSpeak);
         speakSentenceBtn.style.background = '';
       }
     });
@@ -299,7 +310,7 @@ export const SignToVoicePage = {
       modalSendBtn.setAttribute('disabled', 'true');
       modalSendBtn.textContent = 'Sending...';
 
-      const content = `Compiled Sign Language Sentence:\n"${this.getCompiledText()}"\n\nIndividual Detected signs:\n` + 
+      const content = `AI Translated Sentence:\n"${this.translatedSentence || this.getCompiledText()}"\n\nRaw Compiled Signs:\n"${this.getCompiledText()}"\n\nIndividual Detected signs:\n` + 
                       this.history.map(item => `- ${item.word} at ${item.time}`).join('\n');
 
       try {
@@ -338,11 +349,10 @@ export const SignToVoicePage = {
     return this.compiledSentence.join('').replace(/\s+/g, ' ').trim();
   },
 
-  /**
-   * Update compiled sentence view
-   */
-  updateCompilerView() {
+  async updateCompilerView() {
     const view = this.container.querySelector('#compiled-sentence-view');
+    const aiWrap = this.container.querySelector('#ai-translation-wrap');
+    const aiView = this.container.querySelector('#ai-translated-sentence-view');
     const wordCount = this.container.querySelector('#compiler-word-count');
     const speakBtn = this.container.querySelector('#compiler-speak-btn');
     const emailBtn = this.container.querySelector('#compiler-email-btn');
@@ -351,15 +361,35 @@ export const SignToVoicePage = {
     
     if (cleanText === '') {
       view.innerHTML = `<span style="color: var(--text-muted); font-size: 0.9rem;">(Consecutive gesture translations compile here to form long sentences...)</span>`;
+      if (aiWrap) aiWrap.style.display = 'none';
+      if (aiView) aiView.textContent = '';
+      this.translatedSentence = '';
       wordCount.textContent = '0 words';
       speakBtn.setAttribute('disabled', 'true');
       emailBtn.setAttribute('disabled', 'true');
     } else {
-      view.innerHTML = `<strong style="color: var(--accent-light);">${cleanText}</strong>`;
+      view.innerHTML = `<strong style="color: var(--text-muted); font-size: 0.9rem;">${cleanText}</strong>`;
       const count = cleanText.split(' ').filter(Boolean).length;
       wordCount.textContent = `${count} word${count > 1 ? 's' : ''}`;
       speakBtn.removeAttribute('disabled');
       emailBtn.removeAttribute('disabled');
+
+      // Call translation API to group fingerspelling and build correct sentence
+      try {
+        const wordsArray = this.compiledSentence.filter(w => w.trim() !== '');
+        if (wordsArray.length > 0) {
+          const res = await API.translateSentence(wordsArray);
+          if (res.success && res.text) {
+            this.translatedSentence = res.text;
+            if (aiWrap && aiView) {
+              aiWrap.style.display = 'block';
+              aiView.innerHTML = `<strong style="color: var(--accent-light);">${res.text}</strong>`;
+            }
+          }
+        }
+      } catch (err) {
+        console.warn('Sentence translation failed:', err.message);
+      }
     }
   },
 

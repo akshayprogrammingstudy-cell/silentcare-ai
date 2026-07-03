@@ -317,6 +317,39 @@ function handleOfflinePost(endpoint, body) {
     };
   }
   
+  if (endpoint === '/translate-sentence') {
+    const { words } = body;
+    const mergedWords = words.map(w => w.toLowerCase().trim()).filter(w => w !== '');
+    
+    // Simple offline implementation of spelling word combiner
+    const resultWords = [];
+    let currentWord = '';
+    for (const w of mergedWords) {
+      if (w.length === 1 && /^[a-zA-Z]$/.test(w)) {
+        currentWord += w;
+      } else {
+        if (currentWord) { resultWords.push(currentWord); currentWord = ''; }
+        resultWords.push(w);
+      }
+    }
+    if (currentWord) resultWords.push(currentWord);
+
+    let rawSentence = resultWords.join(' ');
+    let formatted = rawSentence.charAt(0).toUpperCase() + rawSentence.slice(1);
+    
+    const isQuestion = resultWords.some(w => ['where', 'why', 'who', 'what', 'when', 'how'].includes(w));
+    const isEmergency = resultWords.some(w => ['emergency', 'danger', 'sos', 'ambulance', 'accident', 'help'].includes(w));
+    
+    if (isQuestion) formatted += '?';
+    else if (isEmergency) formatted += '!';
+    else if (formatted) formatted += '.';
+
+    return {
+      success: true,
+      text: formatted,
+      engine: 'local-offline-client'
+    };
+  }
   return { success: false, error: 'Endpoint offline handler missing' };
 }
 
@@ -345,6 +378,7 @@ function handleOfflineDelete(endpoint) {
 export const API = {
   signToText: (sign) => postData('/sign-to-text', { sign }),
   textToSign: (text) => postData('/text-to-sign', { text }),
+  translateSentence: (words) => postData('/translate-sentence', { words }),
 
   getEmergencySettings: () => getData('/emergency'),
   triggerEmergency: (phrase, location) => postData('/emergency', { phrase, location }),

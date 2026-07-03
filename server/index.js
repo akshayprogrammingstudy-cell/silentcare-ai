@@ -13,6 +13,7 @@ import avatarAnimationRouter from './routes/avatarAnimation.js';
 import authRouter from './routes/auth.js';
 import emailRouter from './routes/email.js';
 import realtimeRouter from './routes/realtime.js';
+import translateSentenceRouter from './routes/translateSentence.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -34,6 +35,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/sign-to-text', signToTextRouter);
 app.use('/api/text-to-sign', textToSignRouter);
 app.use('/api/speech-to-text', speechToTextRouter);
+app.use('/api/translate-sentence', translateSentenceRouter);
 
 app.use('/api/emergency', emergencyRouter);
 app.use('/api/avatar-animation', avatarAnimationRouter);
