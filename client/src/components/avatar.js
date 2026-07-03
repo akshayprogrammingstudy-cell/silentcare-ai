@@ -198,16 +198,16 @@ export class AvatarComponent {
 
             <!-- 5. LEFT ARM & HAND (White coat sleeve matching scrubs/uniform) -->
             <path id="avatar-left-arm" d="M 75,65 Q 55,90 68,115" fill="none" stroke="url(#labcoat-grad)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
-            <g id="avatar-left-hand" transform="translate(68, 115) scale(0.65)">
+            <g id="avatar-left-hand" transform="translate(68, 115) scale(1.2)">
               <circle cx="0" cy="0" r="10" fill="url(#avatar-skin-grad)" stroke="rgba(0,0,0,0.12)" stroke-width="1" />
               <path d="M -6,-2 Q -8,-12 -4,-12 Q -2,-12 -2,-2" fill="url(#avatar-skin-grad)" />
               <path d="M -2,-2 Q -2,-14 1,-14 Q 4,-14 2,-2" fill="url(#avatar-skin-grad)" />
               <path d="M 2,-2 Q 5,-12 7,-10 Q 9,-8 4,-1" fill="url(#avatar-skin-grad)" />
             </g>
-
+ 
             <!-- 6. RIGHT ARM & HAND (White coat sleeve) -->
             <path id="avatar-right-arm" d="M 125,65 Q 145,90 132,115" fill="none" stroke="url(#labcoat-grad)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
-            <g id="avatar-right-hand" transform="translate(132, 115) scale(0.65)">
+            <g id="avatar-right-hand" transform="translate(132, 115) scale(1.2)">
               <circle cx="0" cy="0" r="10" fill="url(#avatar-skin-grad)" stroke="rgba(0,0,0,0.12)" stroke-width="1" />
               <path d="M 6,-2 Q 8,-12 4,-12 Q 2,-12 2,-2" fill="url(#avatar-skin-grad)" />
               <path d="M 2,-2 Q 2,-14 -1,-14 Q -4,-14 -2,-2" fill="url(#avatar-skin-grad)" />
@@ -502,7 +502,7 @@ export class AvatarComponent {
       this.elements.leftArm.setAttribute('d', `M 75,65 Q ${elbowX},${elbowY} ${mappedLh.x},${mappedLh.y}`);
     }
     if (this.elements.leftHand) {
-      this.elements.leftHand.setAttribute('transform', `translate(${mappedLh.x}, ${mappedLh.y}) scale(0.65) rotate(${mappedLh.rot})`);
+      this.elements.leftHand.setAttribute('transform', `translate(${mappedLh.x}, ${mappedLh.y}) scale(1.2) rotate(${mappedLh.rot})`);
     }
 
     // 3. Right Arm and Hand
@@ -512,7 +512,7 @@ export class AvatarComponent {
       this.elements.rightArm.setAttribute('d', `M 125,65 Q ${elbowX},${elbowY} ${mappedRh.x},${mappedRh.y}`);
     }
     if (this.elements.rightHand) {
-      this.elements.rightHand.setAttribute('transform', `translate(${mappedRh.x}, ${mappedRh.y}) scale(0.65) rotate(${mappedRh.rot})`);
+      this.elements.rightHand.setAttribute('transform', `translate(${mappedRh.x}, ${mappedRh.y}) scale(1.2) rotate(${mappedRh.rot})`);
     }
 
     // 4. Blinks
@@ -749,14 +749,12 @@ export class AvatarComponent {
       const letterIdx = Math.min(Math.floor(progress * L), L - 1);
       const activeChar = L > 0 ? word[letterIdx] : '';
 
-      // Swap Carey's right hand content to show the real ASL fingerspelled human hand gesture
       if (this.elements.rightHand && activeChar && activeChar !== lastRenderedChar) {
         lastRenderedChar = activeChar;
         const handPaths = Fingerspelling.getLetterPaths(activeChar);
         if (handPaths) {
-          // Scale from 100x100 viewbox down to fit the ~28x28 hand group area
-          // The hand group is rendered at scale(0.65) so the net result is visible within the avatar
-          this.elements.rightHand.innerHTML = `<g transform="scale(0.28) translate(-5, -10)">${handPaths}</g>`;
+          // Scale and translate the fingerspelling paths to center at (0,0) and match the full size of the hand
+          this.elements.rightHand.innerHTML = `<g transform="scale(0.58) translate(-50, -55)">${handPaths}</g>`;
         }
       }
 
