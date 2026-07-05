@@ -16,6 +16,7 @@
 
 import { Camera as CameraService } from '../utils/camera.js';
 import { Toast } from './toast.js';
+import { i18n } from '../utils/i18n.js';
 
 export class CameraComponent {
   constructor(container, onSignDetectedCallback = null) {
@@ -45,12 +46,50 @@ export class CameraComponent {
     this.candidateSign = '';
     this.candidateHoldCount = 0;
     this.HOLD_THRESHOLD = 4;
+
+    this.aslModel = null;
+    this.useNeuralNetwork = false;
   }
 
   async init() {
     this.render();
     this.setupMediaPipe();
+    await this.loadSavedModel();
+    
+    // Show AI toggle if model exists
+    const aiModeBtn = this.container.querySelector('#camera-toggle-ai-mode');
+    if (aiModeBtn && this.aslModel) {
+      aiModeBtn.style.display = 'inline-flex';
+      aiModeBtn.style.background = 'var(--primary)';
+      aiModeBtn.style.borderColor = 'var(--primary-light)';
+      
+      const statusBadge = this.container.querySelector('#ai-status-badge');
+      if (statusBadge) {
+        statusBadge.textContent = 'NEURAL NET AI';
+      }
+    }
+    
     await this.start();
+  }
+
+  async loadSavedModel() {
+    if (window.aslTrainedModel) {
+      this.aslModel = window.aslTrainedModel;
+      this.useNeuralNetwork = true;
+      return;
+    }
+    if (typeof window.tf !== 'undefined') {
+      try {
+        const model = await window.tf.loadLayersModel('indexeddb://asl-sign-model');
+        if (model) {
+          this.aslModel = model;
+          this.useNeuralNetwork = true;
+          console.log('[CameraComponent] Loaded custom ASL Neural Network model.');
+        }
+      } catch (e) {
+        console.log('[CameraComponent] No neural network model saved in IndexedDB.');
+      }
+    }
   }
 
   render() {
@@ -141,6 +180,9 @@ export class CameraComponent {
 
         <!-- Toolbar controls -->
         <div class="camera-controls-overlay" style="z-index:10;">
+          <button class="camera-btn" id="camera-toggle-ai-mode" title="Toggle Neural Network / Heuristics" style="display: none; background: rgba(0,0,0,0.5); border-color: var(--border-color); align-items:center; justify-content:center;">
+            <span class="material-symbols-outlined">psychology</span>
+          </button>
           <button class="camera-btn" id="camera-toggle-mirror" title="Toggle Mirror">
             <span class="material-symbols-outlined">flip</span>
           </button>
@@ -166,6 +208,7 @@ export class CameraComponent {
     const facingBtn  = this.container.querySelector('#camera-toggle-facing');
     const refreshBtn = this.container.querySelector('#camera-refresh');
     const retryBtn   = this.container.querySelector('#camera-retry-btn');
+    const aiModeBtn  = this.container.querySelector('#camera-toggle-ai-mode');
 
     mirrorBtn.addEventListener('click', () => {
       this.isMirrored = !this.isMirrored;
@@ -186,6 +229,20 @@ export class CameraComponent {
     });
 
     retryBtn.addEventListener('click', async () => await this.start());
+
+    if (aiModeBtn) {
+      aiModeBtn.addEventListener('click', () => {
+        this.useNeuralNetwork = !this.useNeuralNetwork;
+        aiModeBtn.style.background = this.useNeuralNetwork ? 'var(--primary)' : 'rgba(0,0,0,0.5)';
+        aiModeBtn.style.borderColor = this.useNeuralNetwork ? 'var(--primary-light)' : 'var(--border-color)';
+        Toast.show(this.useNeuralNetwork ? i18n.t('nn_mode_active') : i18n.t('heuristic_mode_active'));
+        
+        const statusBadge = this.container.querySelector('#ai-status-badge');
+        if (statusBadge) {
+          statusBadge.textContent = this.useNeuralNetwork ? 'NEURAL NET AI' : 'MOTION AI';
+        }
+      });
+    }
   }
 
   async start() {
@@ -324,6 +381,91 @@ export class CameraComponent {
     const primary   = handsList[0];
     const secondary = handsList.length > 1 ? handsList[1] : null;
     if (!primary) return;
+
+    // Use Neural Network model if enabled and active
+    if (this.useNeuralNetwork && this.aslModel && typeof window.tf !== 'undefined') {
+      const wrist = primary[0];
+      // Normalise coordinates relative to the wrist
+      const shifted = primary.map(lm => ({
+        x: lm.x - wrist.x,
+        y: lm.y - wrist.y,
+        z: lm.z - wrist.z
+      }));
+      let maxDist = 0;
+      for (const lm of shifted) {
+        const d = Math.hypot(lm.x, lm.y, lm.z);
+        if (d > maxDist) maxDist = d;
+      }
+      if (maxDist === 0) maxDist = 1;
+      const normalized = [];
+      for (const lm of shifted) {
+        normalized.push(lm.x / maxDist);
+        normalized.push(lm.y / maxDist);
+        normalized.push(lm.z / maxDist);
+      }
+
+      let sign = '';
+      let conf = 0;
+
+      window.tf.tidy(() => {
+        const inputTensor = window.tf.tensor2d([normalized]);
+        const prediction = this.aslModel.predict(inputTensor);
+        const scores = prediction.dataSync();
+
+        let maxIdx = 0;
+        let maxScore = 0;
+        for (let i = 0; i < scores.length; i++) {
+          if (scores[i] > maxScore) {
+            maxScore = scores[i];
+            maxIdx = i;
+          }
+        }
+
+        const KAGGLE_ASL_CLASSES = [
+          '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+          'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+          'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+          'U', 'V', 'W', 'X', 'Y', 'Z'
+        ];
+
+        if (maxScore > 0.60) {
+          sign = KAGGLE_ASL_CLASSES[maxIdx];
+          conf = maxScore;
+        }
+      });
+
+      if (sign) {
+        this.neutralTicks = 0;
+        this.showGestureLabel(sign, conf);
+        this.showConfidenceMeter(conf);
+
+        if (sign === this.candidateSign) {
+          this.candidateHoldCount++;
+        } else {
+          this.candidateSign = sign;
+          this.candidateHoldCount = 1;
+        }
+
+        if (this.candidateHoldCount >= this.HOLD_THRESHOLD && sign !== this.lastDetectedSign) {
+          this.lastDetectedSign = sign;
+          this.detectionCooldown = 6;
+          this.candidateHoldCount = 0;
+          if (this.onSignDetected) {
+            this.onSignDetected(sign, conf);
+          }
+        }
+        return;
+      } else {
+        this.neutralTicks++;
+        if (this.neutralTicks >= 8) {
+          this.candidateSign = '';
+          this.candidateHoldCount = 0;
+          this.lastDetectedSign = '';
+          this.hideGestureLabel();
+        }
+        return;
+      }
+    }
 
     // ── Landmark aliases ──────────────────────────────────────────────────────
     const wrist     = primary[0];

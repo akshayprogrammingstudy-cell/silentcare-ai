@@ -16,6 +16,7 @@ import EmergencyPage from './pages/emergency.js';
 import AboutPage from './pages/about.js';
 import AuthPage from './pages/auth.js';
 import LiveCallPage from './pages/live-call.js';
+import ModelTrainerPage from './pages/model-trainer.js';
 
 // Router Map
 const ROUTES = {
@@ -25,7 +26,8 @@ const ROUTES = {
   '#emergency': EmergencyPage,
   '#about': AboutPage,
   '#auth': AuthPage,
-  '#live-call': LiveCallPage
+  '#live-call': LiveCallPage,
+  '#model-trainer': ModelTrainerPage
 };
 
 class AppCoordinator {
